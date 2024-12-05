@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = { extras = ["all"], version = "*" }
+uvicorn = { extras = ["standard"], version = "*" }
+alembic = "*"
+sqlalchemy = "*"
+asyncpg = "*"
+pydantic = { extras = ["dotenv"], version = "*" }
+
+[dev-packages]
+pytest = "*"
+pytest-asyncio = "*"
+coverage = { extras = ["toml"], version = "*" }
+alembic-autogen-check = "*"
+black = "*"
+
+[requires]
+python_version = "3"

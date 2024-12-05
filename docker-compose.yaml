@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data/pgdata
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5492:5432"
+
+  migrations:
+    build: .
+    command: alembic upgrade head
+    depends_on:
+      - postgres
+
+  api:
+    build: .
+    env_file:
+      - .env
+    command: python -m api.main
+    ports:
+      - "8101:8000"
