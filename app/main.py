@@ -23,6 +23,10 @@ app.add_middleware(
 async def root():
     return RedirectResponse("/docs")
 
+@app.get("/homepage")
+async def home():
+    return {"text":"Hello World!"}
+
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
     start_time = perf_counter()

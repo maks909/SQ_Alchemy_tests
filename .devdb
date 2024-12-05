@@ -1,0 +1,11 @@
+[
+  {
+    "name": "My test Postgres database", // <-- to identify the connection
+    "type": "postgres",
+    "host": "127.0.0.1",
+    "port": "5492",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "postgres" // <-- the database to show in VS Code DevDb view
+  }
+]
