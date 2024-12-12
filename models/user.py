@@ -5,3 +5,5 @@ class User(Model):
     __tablename__ = "user"
     id = sa.Column(sa.Integer, primary_key=True)
     name = sa.Column(sa.String, nullable=False)
+    email = sa.Column(sa.String, nullable=False)
+    password = sa.Column(sa.String, nullable=False)

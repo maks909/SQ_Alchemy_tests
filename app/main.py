@@ -8,6 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 
+from app.user import user_router
+
 app = FastAPI()
 
 app.add_middleware(
@@ -49,6 +51,7 @@ async def debug_exception_handler(request: Request, exc: Exception):
         status_code=500,
     )
 
+app.include_router(user_router, prefix="/users", tags=["users"])
 
 if __name__ == "__main__":
     import uvicorn
