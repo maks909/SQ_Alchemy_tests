@@ -25,9 +25,11 @@ app.add_middleware(
 async def root():
     return RedirectResponse("/docs")
 
+
 @app.get("/homepage")
 async def home():
-    return {"text":"Hello World!"}
+    return {"text": "Hello World!"}
+
 
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
@@ -50,6 +52,7 @@ async def debug_exception_handler(request: Request, exc: Exception):
         ),
         status_code=500,
     )
+
 
 app.include_router(user_router, prefix="/users", tags=["users"])
 
