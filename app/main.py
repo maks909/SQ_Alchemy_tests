@@ -9,6 +9,7 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 
 from app.user import user_router
+from app.item import item_router
 
 app = FastAPI()
 
@@ -55,6 +56,7 @@ async def debug_exception_handler(request: Request, exc: Exception):
 
 
 app.include_router(user_router, prefix="/users", tags=["users"])
+app.include_router(item_router, prefix="/items", tags=["items"])
 
 if __name__ == "__main__":
     import uvicorn
