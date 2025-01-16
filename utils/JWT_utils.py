@@ -1,17 +1,18 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC
 
 import jwt
 
-from config import settings
+from app.config import settings
+
 
 def decode_token(token: str) -> dict:
     return jwt.decode(token, settings.API_SECRET_KEY, algorithms=["HS256"])
 
 
 def create_jwt_access_token(user_id: int) -> str:
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     data_to_encode = {
-        "sub": user_id,
+        "sub": str(user_id),
         "iat": now,
         "exp": now + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES),
     }
@@ -23,7 +24,7 @@ def create_jwt_access_token(user_id: int) -> str:
 
 
 def create_jwt_refresh_token(user_id: int) -> str:
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     data_to_encode = {
         "sub": user_id,
         "iat": now,

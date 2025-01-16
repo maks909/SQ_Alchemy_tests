@@ -1,18 +1,15 @@
 from typing import Optional
 
 import jwt
-from config import settings
+from app.config import settings
 from fastapi import HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from starlette.requests import Request
 from starlette.status import HTTP_401_UNAUTHORIZED
-from JWT_utils import decode_token
-
-from .tokens import JWTAuthToken
-
+from .JWT_utils import decode_token
 
 class OAuth2JWT(OAuth2PasswordBearer):
-    async def __call__(self, request: Request) -> Optional[JWTAuthToken]:
+    async def __call__(self, request: Request) -> Optional[dict]:
         token = await super().__call__(request)
 
         if not token:
@@ -20,12 +17,6 @@ class OAuth2JWT(OAuth2PasswordBearer):
 
         try:
             jwt_token = decode_token(token)
-            # if not settings.DEBUG and jwt_token.identity == "debug":
-            #     raise HTTPException(
-            #         status_code=HTTP_401_UNAUTHORIZED,
-            #         detail="Invalid token",
-            #         headers={"WWW-Authenticate": "Bearer"},
-            #     )
             return jwt_token
         except jwt.ExpiredSignatureError:
             raise HTTPException(
@@ -41,4 +32,4 @@ class OAuth2JWT(OAuth2PasswordBearer):
             )
 
 
-oauth2_scheme = OAuth2JWT("/auth/login", auto_error=True)
+oauth2_scheme = OAuth2JWT("/users/login", auto_error=True)

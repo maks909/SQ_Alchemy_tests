@@ -10,6 +10,8 @@ alembic = "*"
 sqlalchemy = "*"
 asyncpg = "*"
 pydantic = { extras = ["dotenv"], version = "*" }
+pyjwt = "*"
+passlib = "*"
 
 [dev-packages]
 pytest = "*"

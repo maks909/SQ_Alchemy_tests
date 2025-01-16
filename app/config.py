@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -7,6 +9,8 @@ class Settings(BaseSettings):
     DB_USER: str = "postgres"
     DB_PASS: str = "postgres"
     DB_NAME: str = "postgres"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 24*60
+    API_SECRET_KEY: str = "not_very_secret_key"
 
     @property
     def DATABASE_URL_asyncpg(self):
