@@ -1,8 +1,6 @@
 import logging
-from contextlib import asynccontextmanager
 from time import perf_counter
 
-import sqlalchemy as sa
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.requests import Request

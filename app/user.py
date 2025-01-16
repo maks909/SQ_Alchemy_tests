@@ -52,9 +52,9 @@ async def user_add(session: SessionDep, user_data: CreateUserSchema):
 
 @user_router.get("/me", response_model=UserSchema)
 async def user_me(session: SessionDep, token: dict=Depends(oauth2_scheme)):
-    user_id = token["sub"]
+    user_id = int(token["sub"])
     q=sa.select(User.name, User.email, User.id).where(User.id == user_id)
-    user=(await session.execute(q)).mappings().fetchone()
+    user = (await session.execute(q)).mappings().fetchone()
     return user
 
 @user_router.delete("/{user_id}", response_model=int)
