@@ -9,6 +9,7 @@ from utils.user_utils import get_user_by_id
 
 hasher = Hasher()
 
+
 async def authenticate_user(
     session: AsyncSession, username: str, password: str
 ) -> UserSchema:

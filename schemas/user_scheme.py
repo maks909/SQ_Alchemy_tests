@@ -14,10 +14,12 @@ class UserSchema(BaseModel):
     name: str
     email: str
 
+
 class UpdateUserSchema(BaseModel):
     name: str | None
     password: str | None
     email: str | None
+
 
 class AuthUserSchema(BaseModel):
     grant_type: str

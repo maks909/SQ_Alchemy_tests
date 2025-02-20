@@ -8,6 +8,8 @@ from starlette.responses import RedirectResponse, Response
 
 from app.user import user_router
 from app.item import item_router
+from app.cart import cart_router
+from app.checkout import checkout_router
 
 app = FastAPI()
 
@@ -55,6 +57,8 @@ async def debug_exception_handler(request: Request, exc: Exception):
 
 app.include_router(user_router, prefix="/users", tags=["users"])
 app.include_router(item_router, prefix="/items", tags=["items"])
+app.include_router(cart_router, prefix="/cart", tags=["cart"])
+app.include_router(checkout_router, prefix="/checkout", tags=["checkout"])
 
 if __name__ == "__main__":
     import uvicorn

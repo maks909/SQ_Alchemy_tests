@@ -8,6 +8,7 @@ from starlette.requests import Request
 from starlette.status import HTTP_401_UNAUTHORIZED
 from .JWT_utils import decode_token
 
+
 class OAuth2JWT(OAuth2PasswordBearer):
     async def __call__(self, request: Request) -> Optional[dict]:
         token = await super().__call__(request)

@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = { extras = ["all"], version = "*" }
 uvicorn = { extras = ["standard"], version = "*" }
 alembic = "*"
 sqlalchemy = "*"
@@ -12,6 +11,8 @@ asyncpg = "*"
 pydantic = { extras = ["dotenv"], version = "*" }
 pyjwt = "*"
 passlib = "*"
+fastapi = "*"
+bcrypt = "*"
 
 [dev-packages]
 pytest = "*"

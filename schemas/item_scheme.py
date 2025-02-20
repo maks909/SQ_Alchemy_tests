@@ -3,18 +3,20 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class CreateitemSchema(BaseModel):
+class CreateItemSchema(BaseModel):
     name: str
     description: str
-    price: int
+    price: float
 
-class itemSchema(BaseModel):
+
+class ItemSchema(BaseModel):
     id: int
     name: str
     description: str
-    price: int
+    price: float
 
-class UpdateitemSchema(BaseModel):
+
+class UpdateItemSchema(BaseModel):
     name: str | None
     description: str | None
-    price: int | None
+    price: float | None
